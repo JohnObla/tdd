@@ -7,7 +7,11 @@ class Tester
     "Hello!"
   end
 
-  def bugs_found?
+  def happy?
     @bugs > 0
+  end
+
+  def debug
+    @bugs = 0
   end
 end

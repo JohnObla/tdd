@@ -1,23 +1,39 @@
 require 'rspec'
 require_relative 'tester'
 
-describe Tester do
+RSpec.describe Tester do
   describe '#speak' do
     it 'returns "Hello!"' do
-      tester = Tester.new
       expect(subject.speak).to eql('Hello!')
     end
   end
 
-  describe '#bugs_found?' do
-    it 'returns true if bugs are more than 0' do
-      tester = Tester.new(bugs: 7)
-      expect(tester.bugs_found?).to eql(true)
+  describe 'debug' do
+    context 'when the tester is happy' do
+      subject { described_class.new(bugs: 1) }
+
+      it 'is no longer happy' do
+        subject.debug
+        expect(subject).to_not be_happy
+      end
+    end
+  end
+
+  describe '#happy?' do
+    context 'when bugs are more than 0' do
+      subject { described_class.new(bugs: 1) }
+
+      it 'returns true' do
+        expect(subject).to be_happy
+      end
     end
 
-    it 'returns false if bugs are equal to 0' do
-      tester = Tester.new(bugs: 0)
-      expect(tester.bugs_found?).to eql(false)
+    context 'when bugs are equal to 0' do
+      subject { described_class.new(bugs: 0) }
+
+      it 'returns false' do
+        expect(subject).to_not be_happy
+      end
     end
   end
 end
