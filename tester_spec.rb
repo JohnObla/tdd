@@ -1,7 +1,7 @@
 require 'rspec'
-require_relative 'tester'
+require_relative 'qa'
 
-RSpec.describe Tester do
+RSpec.describe QA do
   describe '#speak' do
     it 'returns "Hello!"' do
       expect(subject.speak).to eql('Hello!')
@@ -9,7 +9,7 @@ RSpec.describe Tester do
   end
 
   describe 'debug' do
-    context 'when the tester is happy' do
+    context 'when the qa is happy' do
       subject { described_class.new(bugs: 1) }
 
       it 'is no longer happy' do

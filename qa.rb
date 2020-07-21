@@ -1,4 +1,4 @@
-class Tester
+class QA
   def initialize(bugs: 0)
     @bugs = bugs
   end
