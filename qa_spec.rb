@@ -8,7 +8,7 @@ RSpec.describe QA do
     end
   end
 
-  describe 'debug' do
+  describe '#debug' do
     context 'when the qa is happy' do
       subject { described_class.new(bugs: 1) }
 
@@ -20,9 +20,10 @@ RSpec.describe QA do
   end
 
   describe '#happy?' do
+    
     context 'when bugs are more than 0' do
       subject { described_class.new(bugs: 1) }
-
+      
       it 'returns true' do
         expect(subject).to be_happy
       end
